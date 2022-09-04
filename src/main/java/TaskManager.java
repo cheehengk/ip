@@ -31,10 +31,9 @@ public class TaskManager {
         System.out.println("____________________");
     }
 
-    public void markTasks(boolean toMark, int taskIndex) {
+    public void markTasks(boolean toMark, int taskIndex) throws DukeException.IllegalMarkTargetException {
         if (taskIndex < 1 || taskIndex > tasks.size()) {
-            System.out.println("Invalid task indicated, unable to process request" + END_OF_LINE);
-            return;
+            throw new DukeException.IllegalMarkTargetException();
         }
         if (toMark) {
             if (tasks.get(taskIndex - 1).getIsDone()) {
